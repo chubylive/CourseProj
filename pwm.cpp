@@ -118,6 +118,21 @@ int pwm::PWMSetFreqPulse(float freqHz){
 	return	0;
 }
 
+int pwm::PWMSetFreqNanoSec(int nano_sec){
+
+	if(nano_sec > 434782608){ // if nano sec greater that 434,782,608 return error
+		return -1;
+	}
+	
+	PWMSetDutyCycle(nano_sec/2);
+	PWMSetPeriod(nano_sec);
+	if (!enabled)
+	{
+		PWMEnable();
+	}
+	return	0;
+}
+
 int pwm::PWMEnable(){
 	char buffer[BUFFER_MAX];
 	ssize_t bytes_written;

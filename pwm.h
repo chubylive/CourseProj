@@ -13,14 +13,12 @@
 #include <unistd.h>
 #include <string>
 
-#define BUFFER_MAX 10
-#define VALUE_MAX 60
-#define MAX_PERIOD_ns 43600000
-
-
 class pwm
 {
 public:
+	static const int BUFFER_MAX = 10;
+	static const int VALUE_MAX = 60;
+	static const int MAX_PERIOD_ns = 43600000;
 	pwm(int pwmId, int period, int duty_cycle);
 	~pwm();
 	int pwmId;
@@ -34,5 +32,6 @@ public:
 	int PWMSetPeriod(int period);
 	int PWMSetDutyCycle(int duty_cycle);
 	int PWMSetFreqPulse(float freqHz);
+	int PWMSetFreqNanoSec(int nano_sec);
 };
 #endif

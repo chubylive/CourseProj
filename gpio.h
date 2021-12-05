@@ -14,9 +14,7 @@
 #include <unistd.h>
 #include <string>
 
-#define DIRECTION_MAX 35
-#define VALUE_MAX 30
-#define BUFFER_MAX 10
+
 #define IN  0
 #define OUT 1
 #define LOW  0
@@ -25,6 +23,9 @@
 class gpio
 {
 public:
+	static const int VALUE_MAX =  30;
+	static const int BUFFER_MAX =  10;
+	static const int DIRECTION_MAX = 35;
 	gpio(int gpioId, int gpioDir);
 	~gpio();
 	int gpioId;
