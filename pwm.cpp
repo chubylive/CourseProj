@@ -31,7 +31,14 @@ int pwm::PWMExport(){
 		return(-1);
 	}
 	close(fd);
-	return (0);
+	printf("successful pwm %d PWMExport\n", this->pwmId);
+
+	usleep(1000000);
+	if (PWMSetPeriod(this->period) != 0)
+	{
+		return -1;		
+	}
+	return PWMSetDutyCycle(this->duty_cycle);
 }
 
 int pwm::PWMUnexport(){
@@ -51,6 +58,8 @@ int pwm::PWMUnexport(){
 		return(-1);
 	}
 	close(fd);
+	printf("successful pwm %d PWMUnexport\n", this->pwmId);
+
 	return(0);
 }
 
@@ -79,6 +88,7 @@ int pwm::PWMSetPeriod(int period_ns){
 		return(-1);
 	}
 	close(fd);
+
 	return(0);
 }
 
@@ -101,6 +111,7 @@ int pwm::PWMSetDutyCycle(int duty_cycle_ns){
 		return(-1);
 	}
 	close(fd);
+
 	return(0);
 }
 

@@ -34,7 +34,9 @@ int gpio::GPIOExport()
 		return(-1);
 	}
 	close(fd);
-	return (0);
+	printf("successful gpio %d GPIOExport\n", this->gpioId);
+	usleep(1000000);
+	return GPIODirection();
 }
 
 int gpio::GPIOUnexport()
@@ -55,6 +57,8 @@ int gpio::GPIOUnexport()
 		return(-1);
 	}
 	close(fd);
+	printf("successful gpio %d GPIOUnexport\n", this->gpioId);
+
 	return(0);
 }
 
@@ -78,6 +82,8 @@ int gpio::GPIODirection()
 	}
 
 	close(fd);
+	printf("successful gpio %d GPIODirection\n", this->gpioId);
+
 	return(0);
 }
 

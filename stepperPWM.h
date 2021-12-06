@@ -10,16 +10,15 @@
 #include "pwm.h"
 #include <time.h>
 
-#define PULSE_DURATION_NS 1000 
 
-class stepper_PWM
+class stepperPWM
 {
 public:
-	stepper_PWM(int gpioIdDir,  int pwmIdPulse, int speed_ns, int duty_cycle_ns);
-	~stepper_PWM();
+	stepperPWM(int gpioIdDir,  int pwmIdPulse, int speed_ns, int duty_cycle_ns);
+	~stepperPWM();
 	void setSpeed_ns(int speed_ns);
 	void pulseRoutine(int stepsToTake);
-
+	int setup();
 	gpio* dirGpio;
 	pwm* pulsePwm;
 	int stepSpeed_ns;
