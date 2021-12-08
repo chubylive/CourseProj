@@ -17,7 +17,6 @@ gpio::~gpio(){
 
 int gpio::GPIOExport()
 {
-
 	char buffer[BUFFER_MAX];
 	ssize_t bytes_written;
 	int fd;
@@ -53,7 +52,7 @@ int gpio::GPIOUnexport()
 
 	bytes_written = snprintf(buffer, BUFFER_MAX, "%d", this->gpioId);
 	if(write(fd, buffer, bytes_written) == -1){
-		fprintf(stderr, "Failed to write unexport for gpio!\n");
+		fprintf(stderr, "Failed to write unexport for gpio %d!\n",this->gpioId);
 		return(-1);
 	}
 	close(fd);
